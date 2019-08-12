@@ -1,0 +1,48 @@
+﻿@model Vidly_Web_Application.Models.Attendance
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Attendance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.attendanceHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendanceHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attendanceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendanceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

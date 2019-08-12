@@ -1,0 +1,74 @@
+﻿@model Vidly_Web_Application.Models.User
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityAnswer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.StaffName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserEmail }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

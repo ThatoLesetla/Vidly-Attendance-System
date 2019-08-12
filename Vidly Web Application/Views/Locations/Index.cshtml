@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.Location>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Location</h2>
+
+<p>
+    <button class="btn btn-large" onclick="doclick()">Add New</button>
+</p>
+
+<table class="table table-striped table-bordered table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RoomNo }, htmlAttributes: new { @class = "btn btn-primary" }) 
+                @Html.ActionLink("Details", "Details", new { id = item.RoomNo }, htmlAttributes: new { @class = "btn btn-small btn-success" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.RoomNo }, htmlAttributes: new { @class = "btn btn-small btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<script>
+    function doclick() {
+        window.location.href = "/Locations/Create";
+    }
+</script>
+
+
+<!--/.module-->
+                      

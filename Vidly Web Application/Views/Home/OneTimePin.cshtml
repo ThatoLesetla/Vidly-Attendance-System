@@ -1,0 +1,96 @@
+﻿@model Vidly_Web_Application.Models.User
+
+@{
+    ViewBag.Title = "Logiin";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | Vidly</title>
+    <link type="text/css" href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="~/Content/css/theme.css" rel="stylesheet">
+    <link type="text/css" href="~/Content/images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i>
+                </a>
+
+                <a class="brand" href="/Home/Login">Vidly </a>
+
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+
+
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+
+
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="module module-login span4 offset4">
+                    @using (Html.BeginForm("OneTimePin", "Home", FormMethod.Post))
+                    {
+                        <fieldset>
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <div class="module-head">
+                                <h3>Sign In</h3>
+                            </div>
+                            <div class="module-body">
+                                <div class="control-group">
+                                    <div class="controls row-fluid">
+                                        <text>Enter OTP: </text>
+                                        <input type="text" name="otp" maxlength="4"/>
+                                        @Html.ValidationMessageFor(a => a.UserEmail)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="module-foot">
+                                <div class="control-group">
+                                    <div class="controls clearfix">
+                                        <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer></footer>
+    <!--/.wrapper-->
+
+
+
+    <script src="Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="Scripts/flot/jquery.flot.js" type="text/javascript"></script>
+    <script src="Scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+    <script src="Scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="Scripts/common.js" type="text/javascript"></script>
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+﻿@model Vidly_Web_Application.Models.VidlyMessage
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>VidlyMessage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.msgSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msgSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msgBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msgBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msgDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msgDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parentMsgID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parentMsgID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

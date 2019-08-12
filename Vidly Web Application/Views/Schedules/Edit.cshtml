@@ -1,0 +1,131 @@
+﻿@model Vidly_Web_Application.Models.Schedule
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Schedule</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.SubjectCode, "SubjectCode", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("SubjectCode", null, "Select Subject", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SubjectCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SemesterCode, "SemesterCode", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("SemesterCode", null, "Select Semester", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SemesterCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DepartmentCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("DepartmentCode", null, "Select Department", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DepartmentCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ClassDay, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.ClassDay,
+            new List<SelectListItem>
+            {
+                new SelectListItem {Text = "Monday", Value = "Monday" },
+                new SelectListItem {Text = "Tuesday",Value = "Tuesday" },
+                new SelectListItem {Text = "Wednesday", Value = "Wednesday"},
+                new SelectListItem {Text = "Thursday", Value = "Thursday" },
+                new SelectListItem {Text = "Friday", Value = "Friday" },
+                new SelectListItem {Text = "Saturday", Value = "Saturday" },
+                new SelectListItem {Text = "Sunday", Value = "Sunday"}
+            }, "Select Day", htmlAttributes: new {  @class = "form-control"})
+            @Html.ValidationMessageFor(model => model.ClassDay, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.StartTime,
+            new List<SelectListItem>
+                {
+                     new SelectListItem {Text = "08:00", Value = "08:00" },
+                     new SelectListItem {Text = "09:30", Value = "09:30" },
+                     new SelectListItem {Text = "11:00", Value = "11:00" },
+                     new SelectListItem {Text = "12:30", Value = "12:30" },
+                     new SelectListItem {Text = "14:00", Value = "14:00" },
+                     new SelectListItem {Text = "15:30", Value = "15:30" },
+                    new SelectListItem {Text = "17:00", Value = "17:00" }
+                }, "Select StartTime", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.EndTime,
+              new List < SelectListItem>
+                {
+                     new SelectListItem {Text = "08:00", Value = "08:00" },
+                     new SelectListItem {Text = "09:30", Value = "09:30" },
+                     new SelectListItem {Text = "11:00", Value = "11:00" },
+                     new SelectListItem {Text = "12:30", Value = "12:30" },
+                     new SelectListItem {Text = "14:00", Value = "14:00" },
+                     new SelectListItem {Text = "15:30", Value = "15:30" },
+                    new SelectListItem {Text = "17:00", Value = "17:00" }
+                }, "Select EndTime", htmlAttributes: new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Venue, "Venue", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Venue, null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Venue, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StaffID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("StaffID", null, "Select Lecture", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+<br />
+}
+
+<div>
+    @Html.ActionLink("View Schedule", "Index")
+</div>

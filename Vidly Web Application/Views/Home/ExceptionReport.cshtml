@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.Schedule>
+
+@{
+    ViewBag.Title = "ExceptionReport";
+}
+
+<h2>ExceptionReport</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location.Building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Semester.SemesterDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location.Building)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester.SemesterDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,118 @@
+﻿@model Vidly_Web_Application.Models.Staff
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Staff</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffStreet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffStreet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffHireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffHireDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffOffice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffOffice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffDesignation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffDesignation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semester.SemesterDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semester.SemesterDesc)
+        </dd>
+
+    </dl>
+</div>
+
+@if(@Session["UserRole"].ToString() == "admin")
+{ 
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.StaffID }, htmlAttributes: new { @class = "btn btn-primary" }) 
+        @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-small btn-success" })
+    </p>
+}

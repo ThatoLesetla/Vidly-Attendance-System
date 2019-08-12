@@ -1,0 +1,179 @@
+﻿@model Vidly_Web_Application.Models.Staff
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add New User</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Staff</h4>
+    @Html.ValidationSummary(true, "", new { @class = "field-validation-error text-danger" })
+    <hr />
+
+    <div class="column">
+
+
+        <div class="form-group">
+            <label>Staff Number</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Staff Number", @id = "staffid", @maxlength = "9" } })
+                @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <label>Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffName, new { htmlAttributes = new { @class = "form-control", @id = "nameTextBox", @placeholder = "Name", @maxlength = 26, @oninput = "validateAlpha()" } })
+                @Html.ValidationMessageFor(model => model.StaffName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <label>Surname</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffSurname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Surname", @maxlength = 30 } })
+                @Html.ValidationMessageFor(model => model.StaffSurname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <label>Email</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email", @maxlength = 45 } })
+                @Html.ValidationMessageFor(model => model.StaffEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <label>Phone</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffPhone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone", @maxlength = 10 } })
+                @Html.ValidationMessageFor(model => model.StaffPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <label>Street</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffStreet, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street", @maxlength = 25 } })
+                @Html.ValidationMessageFor(model => model.StaffStreet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <br />
+    </div>
+    <br />
+
+    <div class="column">
+
+        <div class="form-group">
+            <label>City</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffCity, new { htmlAttributes = new { @class = "form-control", @placeholder = "City", @maxlength = 25 } })
+                @Html.ValidationMessageFor(model => model.StaffCity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Postal Code</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffPostalCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Postal Code", @maxlength = 4 } })
+                @Html.ValidationMessageFor(model => model.StaffPostalCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        @*<div class="form-group">
+            <label>Hiredate</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffHireDate, new { htmlAttributes = new { @class = "form-control", @id = "Hiredate" } })
+                @Html.ValidationMessageFor(model => model.StaffHireDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />*@
+
+        <div class="form-group">
+            <label>Semester Code</label>
+            <div class="col-md-10">
+                @Html.DropDownList("SemesterCode", null, htmlAttributes: new { @class = "form-control", @placeholder = "Semester Code" })
+                @Html.ValidationMessageFor(model => model.SemesterCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        @*<div class="form-group">
+            <label>Office</label>
+            <div class="col-md-10">
+                @Html.DropDownList("RoomNo", null, htmlAttributes: new { @class = "form-control", @placeholder = "Office" })
+                @Html.ValidationMessageFor(model => model.StaffOffice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />*@
+
+        <div class="form-group">
+            <label>Department Code</label>
+            <div class="col-md-10">
+                @Html.DropDownList("StaffDepartmentCode", null, htmlAttributes: new { @class = "form-control", @placeholder = "Department" })
+                @Html.ValidationMessageFor(model => model.StaffDepartmentCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <label>Designation</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StaffDesignation,
+                    new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "IT Manager", Value = "IT Manager"},
+                        new SelectListItem {Text = "Lecturer", Value = "Lecturer"},
+                        new SelectListItem {Text = "HOD", Value = "HOD"}
+                    }, "Select Designation", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StaffDesignation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Login Information" class="btn btn-default" />
+            </div>
+        </div>
+        <br />
+
+        <div>
+            @Html.ActionLink("Back to List", "/Home/UserDashboard", null, htmlAttributes: new { @class = "btn btn-default" })
+            @*<button class="btn btn-default" onclick="doClick">Back To List</button>*@
+        </div>
+        <br />
+    </div>
+    <br />
+}
+
+
+@*<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+
+<script>
+    const staff = document.querySelector('#staffid');
+        console.log(staff.value);
+
+    function listClick{
+        alert("Button");
+    }
+</script>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+}*@

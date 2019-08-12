@@ -1,0 +1,84 @@
+﻿@model Vidly_Web_Application.Models.Subject
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add New</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Subject</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubjectCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SubjectCode, new { htmlAttributes = new { @class = "form-control", @maxlength = 7} })
+                @Html.ValidationMessageFor(model => model.SubjectCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SubjectName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentCode, "DepartmentCode", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DepartmentCode", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Credits, htmlAttributes: new { @class = "control-label col-md-2", @name = "credits" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Credits,
+                         new List<SelectListItem>
+                         {
+                             new SelectListItem {Text = "50", Value = "50"},
+                             new SelectListItem {Text = "100", Value = "100"},
+                             new SelectListItem {Text = "150", Value = "150"},
+                             new SelectListItem {Text = "200", Value = "200"},
+                             new SelectListItem {Text = "250", Value = "250"},
+                             new SelectListItem {Text = "300", Value = "300"},
+                             new SelectListItem {Text = "350", Value = "350"},
+                             new SelectListItem {Text = "400", Value = "400"},
+                             new SelectListItem {Text = "450", Value = "450"},
+                             new SelectListItem {Text = "500", Value = "500"},
+                             new SelectListItem {Text = "550", Value = "550"}
+                         }, "Select Credits", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Credits, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <br />
+}
+
+<div>
+    @Html.ActionLink("View Subjects", "Index")
+</div>
+
+@section
+scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,199 @@
+﻿@RenderSection("scripts", required: false)
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | Vidly</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/css/theme.css" rel="stylesheet" />
+    <link href="~/Content/images/icons/css/font-awesome.css" rel="stylesheet" />
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+          rel='stylesheet'>
+</head>
+
+@{ 
+    
+       string username = Session["Username"].ToString();
+        string useremail = Session["UserEmail"].ToString();
+
+        if (username == null)
+        {
+        @Url.Action("Login", "Home");
+        }
+   
+}
+<body>
+
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i>
+                </a><a class="brand" href="index.html">Vidly </a>
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+                    @*<ul class="nav nav-icons">
+                        <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
+                        <li><a href="#"><i class="icon-eye-open"></i></a></li>
+                        <li><a href="#"><i class="icon-bar-chart"></i></a></li>
+                    </ul>*@
+                    @*<form class="navbar-search pull-left input-append" action="#">
+                        <input type="text" class="span3">
+                        <button class="btn" type="button">
+                            <i class="icon-search"></i>
+                        </button>
+                    </form>*@
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Session["UserEmail"].ToString()</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Item No. 1</a></li>
+                                <li><a href="#">Don't Click</a></li>
+                                <li class="divider"></li>
+                                <li class="nav-header">Example Header</li>
+                                <li><a href="#">A Separated link</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-user dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Content/images/user.png" class="nav-avatar" />
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/StaffMembers/Details/?id=@username">Your Profile</a></li>
+                                <li><a href="/Users/Edit/?id=@useremail">Edit Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/Home/Logout/?id=@useremail">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="sidebar">
+                        <ul class="widget widget-menu unstyled">
+                            <li class="active">
+                                <a href="/Home/UserDashboard">
+                                    <i class="menu-icon icon-dashboard"></i>Dashboard
+                                </a>
+                            </li>
+                            @if (@Session["UserRole"].ToString() == "admin")
+                            {
+                                <li><a href="/StaffMembers/Create"><i class="menu-icon icon-bullhorn"></i>Register Lecturer</a></li>
+                                <li><a href="/Schedules/Index"><i class="menu-icon icon-inbox"></i>View Timetable</a></li>
+                                <li><a href="/Home/AttendanceDetailReport"><i class="menu-icon icon-tasks"></i>Attendance Report</a></li>
+                                <li>
+                                    <a href="/Home/StaffDetailReport">
+                                        <i class="menu-icon icon-inbox"></i>Staff Report @*<b class="label green pull-right">
+                        11
+                    </b>*@
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a href="/Users/Edit/?id=@useremail"><i class="menu-icon icon-bullhorn"></i>Update Profile</a></li>
+                                <li><a href="/Schedules/MyTable"><i class="menu-icon icon-inbox"></i>View Timetable</a></li>
+                                @*<li><a href="/Subjects/Index"><i class="menu-icon icon-tasks"></i>My Subjects</a></li>*@
+                            }
+
+                        </ul>
+                        <!--/.widget-nav-->
+                        <ul class="widget widget-menu unstyled">
+
+
+                            @if (@Session["UserRole"].ToString() == "admin")
+                            {
+                                <li><a href="/StaffMembers/Index"><i class="icon-inbox"></i>Users</a></li>
+                                <li><a href="/Subjects/Index"><i class="menu-icon icon-book"></i>Add Subjects</a></li>
+                                <li><a href="/Schedules/Create"><i class="menu-icon icon-book"></i>Create Lecture Schedule</a></li>
+                                @*<li><a href="/Home/Construction"><i class="menu-icon icon-table"></i>Calendar</a></li>*@
+                                <li><a href="/Home/ActiveProfiles"><i class="menu-icon icon-paste"></i>Active Lectures </a></li>
+                                @*<li><a href="/Home/Construction"><i class="menu-icon icon-bar-chart"></i>View User Logs</a></li>*@
+                                @*<li><a href="/Home/InactiveProfiles"><i class="menu-icon icon-bold"></i>Departments</a></li>
+            <li><a href="/Home/InactiveProfiles"><i class="menu-icon icon-bold"></i>Faculties</a></li>
+            <li><a href="/Home/InactiveProfiles"><i class="menu-icon icon-bold"></i>Location</a></li>*@
+                                @*<li><a href="/Home/Construction"><i class="menu-icon icon-bullhorn"></i>Feedback</a></li>*@
+                            }
+                            else
+                            {
+                                <li><a href="/Home/Construction"><i class="menu-icon icon-table"></i>Attendance Report</a></li>
+                                @*<li><a href="/Home/Index"><i class="menu-icon icon-book"></i>Calendar</a></li>
+            <li><a href="/Home/Construction"><i class="menu-icon icon-paste"></i>View Login Logs</a></li>
+            <li><a href="/Home/Construction"><i class="menu-icon icon-bar-chart"></i>Feedback</a></li>*@
+                            }
+                        </ul>
+                        <!--/.widget-nav-->
+                        <ul class="widget widget-menu unstyled">
+
+                            @if (@Session["UserRole"].ToString() == "admin")
+                            {
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages">
+                                    <i class="menu-icon icon-cog">
+                                    </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                    </i>More Pages
+                                </a>
+                            </li>
+                                    <ul id="togglePages" class="collapse unstyled">
+                                        <li><a href="/Users/Index"><i class="icon-inbox"></i>User Login Details</a></li>
+                                        <li><a href="/Faculties/Index"><i class="icon-inbox"></i>Faculties </a></li>
+                                        <li><a href="/Departments/Index"><i class="icon-inbox"></i>Department </a></li>
+                                        <li><a href="/Locations/Index"><i class="icon-inbox"></i>Location </a></li>
+                                    </ul>
+                                    }
+                                
+                                <li><a href="/Home/Logout/?id=@useremail"><i class="icon-inbox"></i>Logout </a></li>
+
+                            </ul>
+                    </div>
+                    <br />
+                    <!--/.sidebar-->
+                </div>
+                <!--/.span3-->
+                <div class="span9">
+                    <div class="content">
+                        <div class="btn-controls">
+                            <div class="btn-box-row row-fluid">
+                                <div>
+                                    @RenderBody()
+                                    <br />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.content-->
+                </div>
+                <!--/.span9-->
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+    <div class="footer">
+        <div class="container">
+            <b class="copyright">&copy; 2019 Vidly Attendance Management System </b>All rights reserved.
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.resize.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/common.js"></script>
+</body>
+</html>

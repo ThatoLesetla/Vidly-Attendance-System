@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.Attendance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<input type="text" id="filterInput" placeholder="Search names....." />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.attendanceHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.attendanceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.attendanceHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.attendanceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

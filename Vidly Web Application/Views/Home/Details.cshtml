@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.Staff>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Staff</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffBDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffBDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffDepartmentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffDepartmentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffDesignation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffDesignation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StaffID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

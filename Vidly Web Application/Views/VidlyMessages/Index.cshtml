@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.VidlyMessage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vidly News Feed</h2>
+
+
+<div style="padding-left: 35px;" class="wrapper">
+    <div class="container">
+        <div class="row">
+
+            <!--/.span3-->
+            <div class="span9">
+                <div class="content">
+                    <div class="module message">
+                        <div class="module-head">
+                            <h3>
+                                Message
+                            </h3>
+                        </div>
+                        <div class="module-option clearfix">
+                            <div class="pull-left">
+                                <div class="btn-group">
+                                    @*<button class="btn">
+                    Inbox
+                </button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Inbox(11)</a></li>
+                    <li><a href="#">Sent</a></li>
+                    <li><a href="#">Draft(2)</a></li>
+                    <li><a href="#">Trash</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>*@
+                                </div>
+                            </div>
+                            @if (Session["UserRole"].ToString() == "admin")
+                            {
+                                <div class="pull-right">
+                                    <a href="/VidlyMessages/Create" class="btn btn-primary">Compose</a>
+                                </div>
+                            }
+                        </div>
+                        <div class="module-body table">
+                            <table class="table table-message">
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="read starred">
+                                            <td class="cell-check">
+                                                @if (Session["UserRole"].ToString() == "admin")
+                                                {
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                                }
+                                               
+                                            </td>
+                                            <td class="cell-icon">
+                                                <i class="icon-star"></i>
+                                            </td>
+                                            <td class="cell-author hidden-phone hidden-tablet">
+                                                @Html.DisplayFor(modelItem => item.creatorID)
+                                            </td>
+                                            <td class="cell-title">
+                                                @Html.DisplayFor(modelItem => item.msgSubject)
+                                            </td>
+                                            <td class="cell-icon hidden-phone hidden-tablet">
+                                                @Html.DisplayFor(modelItem => item.msgBody)
+                                            </td>
+                                            <td class="cell-time align-right">
+                                                @Html.DisplayFor(modelItem => item.msgDate)
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="module-foot">
+                        </div>
+                    </div>
+                </div>
+                <!--/.content-->
+            </div>
+            <!--/.span9-->
+        </div>
+    </div>
+    <!--/.container-->
+</div>
+<!--/.wrapper-->
+
+@*@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+@ |
+@*@
+
+<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

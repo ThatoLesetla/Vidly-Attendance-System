@@ -1,0 +1,159 @@
+﻿@*@model Vidly_Web_Application.Models.Staff*@
+@model Vidly_Web_Application.ViewModels.Home.staffReportView
+
+@{
+    ViewBag.Title = "StaffDetailReport";
+}
+
+<h2>Staff Detail Report</h2>
+
+@using (Html.BeginForm("StaffDetailReport", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Staff</h4>
+    @Html.ActionLink("Export To Excel", "Reports", new { ReportType = "Excel" }) |
+    @Html.ActionLink("Export To Word", "Reports", new { ReportType = "Word" }) |
+    @Html.ActionLink("Export To PDF", "Reports", new { ReportType = "PDF" })
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="column" style="height: 70px; padding-left: 0px;">
+        <label>From</label>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="date" class="form-control" name="FromDate" max="2019-07-18", required />
+                @Html.ValidationMessageFor(model => model.staff.StaffHireDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 70px;" class="column">
+        <label>To</label>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="date" class="form-control" name="StartDate" max="2019-07-18", required/>
+                @Html.ValidationMessageFor(model => model.staff.StaffHireDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DropDownList("StaffDepartmentCode", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.staff.StaffDepartmentCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.staff.StaffDesignation,
+                new List<SelectListItem>
+                {
+                    new SelectListItem {Text = "IT Manager", Value = "IT Manager"},
+                    new SelectListItem {Text = "Lecturer", Value = "Lecturer"},
+                    new SelectListItem {Text = "HOD", Value = "HOD"}
+                }, "Select Designation", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.staff.StaffDesignation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Filter" class="btn btn-default" />
+        </div>
+    </div>
+    <br />
+
+    <div style="height: 200px; overflow-y: scroll">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Surname
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        Street
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    @*<th>
+                        Postal Code
+                    </th>*@
+                    @*<th>
+                        Hiredate
+                    </th>
+                    <th>
+                        Office
+                    </th>
+                    <th>
+                        Designation
+                    </th>*@
+                    @*<th>
+                        Department Name
+                    </th>*@
+                    @*<th>
+                        Semester Code
+                    </th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.staffs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffSurname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffStreet)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffCity)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.StaffPostalCode)
+                        </td>*@
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.StaffHireDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffOffice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffDesignation)
+                        </td>*@
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                        </td>*@
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Semester.SemesterCode)
+                        </td>*@
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+}
+

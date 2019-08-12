@@ -1,0 +1,41 @@
+﻿@model Vidly_Web_Application.Models.Subject
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Subject Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectName)
+        </dd>
+
+        <dt>
+            Credits:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Credits)
+        </dd>
+
+        <dt>
+            Department Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SubjectCode }, htmlAttributes: new { @class = "btn btn-small btn-primary" }) 
+   
+</p>

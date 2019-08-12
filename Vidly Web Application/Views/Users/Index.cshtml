@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Users</h2>
+
+<p>
+    <a href="/Users/Create" class="btn btn-large">Add New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+           Role
+        </th>
+        <th>
+           IP Address
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.StaffName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserRole)
+        </td>
+        <td>
+            @Html.DisplayFor(Model => item.UserIP)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserEmail }, htmlAttributes: new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.UserEmail }, htmlAttributes: new { @class = "btn btn-small btn-success" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserEmail }, htmlAttributes: new { @class = "btn btn-small btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

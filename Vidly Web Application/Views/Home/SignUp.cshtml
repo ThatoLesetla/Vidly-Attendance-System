@@ -1,0 +1,150 @@
+﻿@model Vidly_Web_Application.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    var result = ViewBag.Invalid;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | Vidly</title>
+    <link type="text/css" href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="~/Content/css/theme.css" rel="stylesheet">
+    <link type="text/css" href="~/Content/images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i>
+                </a>
+
+                <a class="brand" href="/Home/Login">Vidly </a>
+
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+
+                    <ul class="nav pull-right">
+                        <li>
+                            <a href="/Home/SignUp">Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="/Home/ForgotPassword">
+                                Forgot your password?
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+
+
+
+    <div class="wrapper">
+        <div class="container">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Please provide the following information:</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger"})
+                <label class="control-label col-md-2">StaffID:</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(Model => Model.Username)
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                <br />
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    <label class = "control-label col-md-2">Confirm Password:</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SecurityQuestion, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SecurityQuestion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SecurityQuestion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SecurityAnswer, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SecurityAnswer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SecurityAnswer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+                    }
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <b class="copyright">&copy; Vidly Attendance Management System </b> All rights reserved.
+        </div>
+    </div>
+    <!--/.wrapper-->
+
+
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.resize.js"></script>
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/common.js"></script>
+</body>
+</html>

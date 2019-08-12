@@ -1,0 +1,42 @@
+﻿@model Vidly_Web_Application.Models.Attendance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Attendance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.attendanceHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendanceHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attendanceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendanceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

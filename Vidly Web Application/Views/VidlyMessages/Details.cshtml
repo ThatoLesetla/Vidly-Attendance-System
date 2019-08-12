@@ -1,0 +1,58 @@
+﻿@model Vidly_Web_Application.Models.VidlyMessage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VidlyMessage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.msgSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msgSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msgBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msgBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msgDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msgDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parentMsgID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parentMsgID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

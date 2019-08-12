@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.Attendance>
+
+@{
+    ViewBag.Title = "AttendanceDetailReport";
+}
+
+<h2>Attendance Detail Report</h2>
+
+<label>Search Lecturer</label>
+<input type="text" id="filterInput" placeholder="Search names....." />
+
+<table style="height: 200px;"class="table" id="tableData">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.attendanceHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.attendanceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.attendanceHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.attendanceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<script>
+    // get input
+    let filterInput = document.getElementById('filterInput');
+
+    // add event listner
+    filterInput.addEventListener('keyup', filterNames);
+
+    function filterNames() {
+        // Get value of input from text box
+        let filterValue = document.getElementById('filterInput').value.toUpperCase();
+
+        // Get names table
+        let names = document.getElementById('tableData');
+        console.log(names);
+    }
+</script>

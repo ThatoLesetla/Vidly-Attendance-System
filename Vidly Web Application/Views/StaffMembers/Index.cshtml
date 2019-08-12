@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.Staff>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lectures</h2>
+
+<p>
+    <a href="/StaffMembers/Create" class="btn btn-large">Add New</a>
+</p>
+
+<br />
+
+<div class="module">
+    <div class="module-head">
+        <h3>
+            Personal Information
+        </h3>
+    </div>
+    <div class="module-body table">
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table id="staffMembers" cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped  display dataTable"
+                       width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Surname
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Street
+                            </th>
+                            <th>
+                                City
+                            </th>
+                            @*<th>
+                                    Postal Code
+                                </th>*@
+                            @*<th>
+                                    Hiredate
+                                </th>
+                                <th>
+                                    Office
+                                </th>
+                                <th>
+                                    Designation
+                                </th>*@
+                            @*<th>
+                                    Department Name
+                                </th>*@
+                            @*<th>
+                                    Semester Code
+                                </th>*@
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in @Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffSurname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffEmail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffPhone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffStreet)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffCity)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.StaffPostalCode)
+                                    </td>*@
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.StaffHireDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StaffOffice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StaffDesignation)
+                                    </td>*@
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                                    </td>*@
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.Semester.SemesterCode)
+                                    </td>*@
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.StaffID }, htmlAttributes: new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Details", "Details", new { id = item.StaffID }, htmlAttributes: new { @class = "btn btn-small btn-success" })
+                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.StaffID }, htmlAttributes: new { @class = "btn btn-small btn-danger" })*@
+                                    <button data-staff-id="@item.StaffID" class="btn btn-small btn-danger js-delete">Delete</button>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="JavaScript" type="text/javascript" src="~/Scripts/jQuery.3.3.1/Content/Scripts/jquery-3.3.1.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="~/Scripts/jQuery.3.3.1/Content/Scripts/jquery-3.3.1.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#staffMembers .js-delete").on("click", function () {
+            if (confirm("Are you sure you want to delete this staff Member?")) {
+                $.ajax({
+                    url: "/api/staffs/" + $(this).attr("data-staff-id"),
+                    method: "DELETE",
+                    success: function () {
+                        console.log("Success");
+                    }
+                });
+            }
+
+                
+        });
+    });
+</script>
+

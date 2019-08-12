@@ -1,0 +1,82 @@
+﻿@model Vidly_Web_Application.Models.Staff
+
+@{
+    ViewBag.Title = "SummaryReport";
+    var data = ViewBag.hoursWorked;
+    var days = ViewBag.daysWorked;
+    var classes = ViewBag.totClasses;
+    
+}
+
+<html>
+    <head>
+
+    </head>
+
+    <body>
+
+        <h2>Summary Report</h2>
+        @Html.ActionLink("Export To Excel", "SummaryReports", new { ReportType = "Excel" }) |
+        @Html.ActionLink("Export To Word", "SummaryReports", new { ReportType = "Word" }) |
+        @Html.ActionLink("Export To PDF", "SummaryReports", new { ReportType = "PDF" })
+        <br />
+        @using (Html.BeginForm("SummaryReport", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <br />
+            <h4>Staff Member</h4>
+            @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
+            <hr />
+
+
+            <div class="form-group">
+                <label>Staff ID</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StaffID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Staff ID", @maxlength = 9 } })
+                    @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Filter" class="btn btn-default" />
+                </div>
+            </div>
+            <br />
+        }
+        <hr />
+        <h4>Summary of Employement</h4>
+        <div class="column">
+            <h5>Number of hours attended</h5>
+            <text>@data</text>
+            <h5>Most Attended Subject</h5>
+            <text>DSO34AT</text>
+            <hr />
+            <h4>Lecturer Details</h4>
+            <h5>Lecturer Name</h5>
+            @Html.DisplayFor(model => model.StaffName)
+            <h5>Lecturer ID</h5>
+            @Html.DisplayFor(model => model.StaffID)
+            <h5>Lecturer Email</h5>
+            @Html.DisplayFor(model => model.StaffEmail)
+        </div>
+        <br />
+        <div class="column">
+            <h5>Classes attended</h5>
+            <text>@Convert.ToInt32(classes)</text>
+            <h5>Total days(including weekends)</h5>
+            <text>@days</text>
+            <hr />
+            <h5>HireDate</h5>
+            @Html.DisplayFor(model => model.StaffHireDate)
+            <h5>Department</h5>
+            @Html.DisplayFor(model => model.StaffDepartmentCode)
+            <h5>Designation</h5>
+            @Html.DisplayFor(model => model.StaffDesignation)
+        </div>
+
+    </body>
+</html>

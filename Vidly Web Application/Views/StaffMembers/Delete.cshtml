@@ -1,0 +1,120 @@
+﻿@model Vidly_Web_Application.Models.Staff
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Staff</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffStreet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffStreet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffHireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffHireDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffOffice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffOffice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffDesignation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffDesignation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semester.SemesterDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semester.SemesterDesc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Vidly_Web_Application.Models.Department>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Departments</h2>
+
+<p>
+    <a href="/Departments/Create" class="btn btn-primary">Add New</a>
+</p>
+
+
+<div class="module">
+    <div class="module-head">
+        <h3>
+            Tshwane University of Technology
+        </h3>
+    </div>
+    <div class="module-body table">
+        <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
+               width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Department Code
+                    </th>
+                    <th>
+                        Department Name
+                    </th>
+                    <th>
+                        Faculty Code
+                    </th>
+                    <th>
+                        Subjects
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @Model)
+                {
+                    <tr class="odd gradeX">
+                        <td>
+                            @Html.DisplayFor(model => item.DepartmentCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.DepartmentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FacultyCode)
+                        </td>
+                        <td class="center">
+                            @Html.ActionLink("View Subjects", "Index", "Subjects")
+                        </td>
+                        <td class="center">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentCode }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.DepartmentCode }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentCode })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
